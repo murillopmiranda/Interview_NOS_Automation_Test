@@ -1,0 +1,5914 @@
+{
+	"info": {
+		"_postman_id": "3aa85ea7-c0ac-4dac-93f8-744fd3a911dd",
+		"name": "NOS Automation Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19547442"
+	},
+	"item": [
+		{
+			"name": "Manual Script (Functional Test)",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "List users",
+							"item": [
+								{
+									"name": "TC1: List_users-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Resultado: Status code = 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Resultado: Text code = OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation of the fields for the response body\r",
+													"\r",
+													"pm.test(\"Resultado: O Response tem os campos: id, name, email, gender e status\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    pm.expect(responseData).to.be.an('array');\r",
+													"    responseData.forEach(function(item) {\r",
+													"        pm.expect(item).to.have.property('id');\r",
+													"        pm.expect(item).to.have.property('name');\r",
+													"        pm.expect(item).to.have.property('email');\r",
+													"        pm.expect(item).to.have.property('gender');\r",
+													"        pm.expect(item).to.have.property('status');\r",
+													"    });\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Resultado: O tempo de resposta está abaixo de 3 segundos\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer ACCESS-TOKEN"
+											}
+										],
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC2: List_users-401_Unauthorized",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 401\r",
+													"pm.test(\"Resultado: Status code = 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Resultado: Text code = Unauthorized\", function () {\r",
+													"    pm.response.to.have.status(\"Unauthorized\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Invalid token\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid token\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Resultado: O tempo de resposta está abaixo de 3 segundos\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer ACCESS-TOKEN"
+											}
+										],
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC3: List_users-401_Unauthorized",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 401\r",
+													"pm.test(\"Resultado: Status code = 401\", function () {\r",
+													"    pm.response.to.have.status(401);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Resultado: Text code = Unauthorized\", function () {\r",
+													"    pm.response.to.have.status(\"Unauthorized\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Invalid token\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Invalid token\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Resultado: O tempo de resposta está abaixo de 3 segundos\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "abcde",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer ACCESS-TOKEN"
+											}
+										],
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create User",
+							"item": [
+								{
+									"name": "TC1: Create_User-201_Sucess",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 201\r",
+													"pm.test(\"Result: Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Created\", function () {\r",
+													"    pm.response.to.have.status(\"Created\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: Result: The parameteres of the response are correct\", function () {\r",
+													"     pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('name');\r",
+													"    pm.expect(pm.response.json()).to.have.property('email');\r",
+													"    pm.expect(pm.response.json()).to.have.property('gender');\r",
+													"    pm.expect(pm.response.json()).to.have.property('status')\r",
+													"});\r",
+													"\r",
+													"  \r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tesster 5\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"qsa5@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC1: Create_User-422_EmailCreated",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Email has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"has already been taken\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 3\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"qa2@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC3: Create_User-422_NameNull",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Name can't be blank\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"qad5@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC4: Create_User-422_NoName",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Name can't be blank\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"gender\": \"male\",\r\n    \"email\": \"qad5@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC5: Create_User-422_genderNull",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Gender can't be blank, can be male of female\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank, can be male of female\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa\",\r\n    \"gender\": \"\",\r\n    \"email\": \"qad5@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC6: Create_User-422_NoGender",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Gender can't be blank, can be male of female\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank, can be male of female\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa\",\r\n\r\n    \"email\": \"qad5@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC7: Create_User-422_GenderValueIncorrect",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Gender can't be blank, can be male of female\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank, can be male of female\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 6\",\r\n    \"gender\": \"alpha super male\",\r\n    \"email\": \"qa6@tester.com\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC8: Create_User-422_EmailNull",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Email can't be blank\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 6\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC9: Create_User-422_NoEmail",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Email can't be blank\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 6\",\r\n    \"gender\": \"male\",\r\n    \r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC10: Create_User-422_EmailWrongFormat",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Email is invalid\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"is invalid\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 6\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"qa\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC11: Create_User-422_EmailWrongFormat2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Email is invalid\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"is invalid\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 6\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"@qa\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC12: Create_User-422_EmailWrongFormat3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Email is invalid\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"is invalid\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 6\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"@qa.com\",\r\n    \"status\": \"active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC13: Create_User-422_StatusNull",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Status can't be blank\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 6\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"qa@qa.com\",\r\n    \"status\": \"\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC14: Create_User-422_NoStatus",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Status can't be blank\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 6\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"qa@qa.com\"\r\n \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC15: Create_User-422_StatusDontExist",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for value name\r",
+													"pm.test(\"Result: Text code is: Status can't be blank\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"can't be blank\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Qa Tester 5\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"qa6@tester.com\",\r\n    \"status\": \"ultra active\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get user details",
+							"item": [
+								{
+									"name": "TC1: Get_User_Details-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('name');\r",
+													"    pm.expect(pm.response.json()).to.have.property('email');\r",
+													"    pm.expect(pm.response.json()).to.have.property('gender');\r",
+													"    pm.expect(pm.response.json()).to.have.property('status')\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/7307649",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"7307649"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC1: Get_User_Details-404_NotFound",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 404\r",
+													"pm.test(\"Result: Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Not Found\", function () {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter value\r",
+													"pm.test(\"Result: Text code is: has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/11221122112342",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"11221122112342"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Update User",
+							"item": [
+								{
+									"name": "TC1: Update_User-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('email');\r",
+													"    pm.expect(pm.response.json()).to.have.property('name');\r",
+													"    pm.expect(pm.response.json()).to.have.property('status');\r",
+													"    pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('gender')\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"QA QA 2\",\r\n    \"email\": \"QA2@TESTE.COM\",\r\n    \"status\": \"inactive\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/7305861",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"7305861"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Delete user",
+							"item": [
+								{
+									"name": "TC1: Delete_User-204_NoContent",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 204\r",
+													"pm.test(\"Result: Status code is 204\", function () {\r",
+													"    pm.response.to.have.status(204);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: No Content\", function () {\r",
+													"    pm.response.to.have.status(\"No Content\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/6940578",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"6940578"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC2: Delete_User-404_NotFound",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 404\r",
+													"pm.test(\"Result: Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Not Found\", function () {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/6940578",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"6940578"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Posts",
+					"item": [
+						{
+							"name": "List Posts",
+							"item": [
+								{
+									"name": "TC1: List Posts",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer ACCESS-TOKEN"
+											}
+										],
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create Post",
+							"item": [
+								{
+									"name": "TC1: Create_User_Post-201",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 201\r",
+													"pm.test(\"Result: Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Created\", function () {\r",
+													"    pm.response.to.have.status(\"Created\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('user_id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('title');\r",
+													"    pm.expect(pm.response.json()).to.have.property('body');\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Titulo Post 1\",\r\n    \"body\": \"Post da Postagem do Post 1\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/7307649/posts",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"7307649",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get User Posts",
+							"item": [
+								{
+									"name": "TC1: Get_User_Posts-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/7307649/posts",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"7307649",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC1: Get_User_Posts-200_UserDontExist",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/1212112211221122/posts",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"1212112211221122",
+												"posts"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Update Post",
+							"item": [
+								{
+									"name": "TC1: Update_User-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('title');\r",
+													"    pm.expect(pm.response.json()).to.have.property('body');\r",
+													"    pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('user_id')\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Titulo Post 1111\",\r\n    \"body\": \"Post da Postagem do Post 1111\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts/147177",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts",
+												"147177"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC2: Update_User-404",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 404\r",
+													"pm.test(\"Result: Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Not Found\", function () {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Titulo Post 1111\",\r\n    \"body\": \"Post da Postagem do Post 1111\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts/2121545487875454",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts",
+												"2121545487875454"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Delete Post",
+							"item": [
+								{
+									"name": "TC1: Delete_User-204",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 204\r",
+													"pm.test(\"Result: Status code is 204\", function () {\r",
+													"    pm.response.to.have.status(204);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: No Content\", function () {\r",
+													"    pm.response.to.have.status(\"No Content\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Titulo Post 1111\",\r\n    \"body\": \"Post da Postagem do Post 1111\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts/146750",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts",
+												"146750"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC2: Delete_User-404",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 404\r",
+													"pm.test(\"Result: Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Not Found\", function () {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"Titulo Post 1111\",\r\n    \"body\": \"Post da Postagem do Post 1111\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts/322154878754212154",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts",
+												"322154878754212154"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Comments",
+					"item": [
+						{
+							"name": "List Comments",
+							"item": [
+								{
+									"name": "TC1: List_Comments-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer ACCESS-TOKEN"
+											}
+										],
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/comments",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create comment",
+							"item": [
+								{
+									"name": "TC1: Create_Post_Comment-201",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 201\r",
+													"pm.test(\"Result: Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Created\", function () {\r",
+													"    pm.response.to.have.status(\"Created\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('post_id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('name');\r",
+													"    pm.expect(pm.response.json()).to.have.property('email');\r",
+													"    pm.expect(pm.response.json()).to.have.property('body')\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Tester QA\",\r\n    \"email\": \"tester@qa.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts/146760/comments",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts",
+												"146760",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC1: Create_Post_Comment-422",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: must exist\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"must exist\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Tester QA\",\r\n    \"email\": \"tester@qa.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts/3232212154548787/comments",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts",
+												"3232212154548787",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get User comment",
+							"item": [
+								{
+									"name": "TC1: Get_Posts_Comments-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts/146760/comments",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts",
+												"146760",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC1: Get_Posts_Comments-200_PostDontExist",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/posts/3221548787542154874/comments",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"posts",
+												"3221548787542154874",
+												"comments"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Update comment",
+							"item": [
+								{
+									"name": "TC1: Update_Post_Comment-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('name');\r",
+													"    pm.expect(pm.response.json()).to.have.property('email');\r",
+													"    pm.expect(pm.response.json()).to.have.property('body');\r",
+													"    pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('post_id');\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Tester QA 222\",\r\n    \"email\": \"tester@q2a.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user 2222222\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/comments/115886",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"comments",
+												"115886"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC1: Update_Post_Comment-404_CommentDontExist",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 404\r",
+													"pm.test(\"Result: Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Not Found\", function () {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Tester QA 222\",\r\n    \"email\": \"tester@q2a.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user 2222222\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/comments/115777323232323232",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"comments",
+												"115777323232323232"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Delete comment",
+							"item": [
+								{
+									"name": "TC1: Delete_Post_Comment-204",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 204\r",
+													"pm.test(\"Result: Status code is 204\", function () {\r",
+													"    pm.response.to.have.status(204);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: No Content\", function () {\r",
+													"    pm.response.to.have.status(\"No Content\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Tester QA 222\",\r\n    \"email\": \"tester@q2a.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user 2222222\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/comments/115777",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"comments",
+												"115777"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC2: Delete_Post_Comment-404_CommentDontExist",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 404\r",
+													"pm.test(\"Result: Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Not Found\", function () {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Tester QA 222\",\r\n    \"email\": \"tester@q2a.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user 2222222\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/comments/115777323221215454",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"comments",
+												"115777323221215454"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "ToDo",
+					"item": [
+						{
+							"name": "List ToDo",
+							"item": [
+								{
+									"name": "TC1: List_Comments-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validação para status code\r",
+													"pm.test(\"Resultado: Status code é igaul a 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validação do tempo de resposta da requisição deve ser menor que 3 segundos\r",
+													"pm.test(\"Resultado: O tempo de resposta é menor que 3 segundos\", function () {\r",
+													"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"//Validação do schema response body\r",
+													"pm.test(\"Resultado: O Schema Response body está correto\", function () {\r",
+													"    var response = pm.response.json();\r",
+													"    response.forEach((todo) => {\r",
+													"        pm.expect(todo).to.have.property('id');\r",
+													"        pm.expect(todo).to.have.property('user_id');\r",
+													"        pm.expect(todo).to.have.property('title');\r",
+													"        pm.expect(todo).to.have.property('due_on');\r",
+													"        pm.expect(todo).to.have.property('status');\r",
+													"    });\r",
+													"});\r",
+													"\r",
+													"//Validação para os campos requeridos no response body\r",
+													"pm.test(\"Resultado: O Response tem os campos: id, user_id, title, due_on e status\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    pm.expect(responseData).to.be.an('array');\r",
+													"    responseData.forEach(function(item) {\r",
+													"        pm.expect(item).to.have.property('id');\r",
+													"        pm.expect(item).to.have.property('user_id');\r",
+													"        pm.expect(item).to.have.property('title');\r",
+													"        pm.expect(item).to.have.property('due_on');\r",
+													"        pm.expect(item).to.have.property('status');\r",
+													"    });\r",
+													"});\r",
+													"\r",
+													"//Validação para interpretar e validar o valor do campo due_on\r",
+													"pm.test(\"Resultado: O campo Due_on esta com o formato Date/Time válido\", function () {\r",
+													"  const responseData = pm.response.json();\r",
+													"  responseData.forEach(function(todo) {\r",
+													"    pm.expect(todo.due_on).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}[+-]\\d{2}:\\d{2}$/);\r",
+													"  });\r",
+													"});\r",
+													"\r",
+													"//Validação se todos os resultados possui valor completed no campo status\r",
+													"pm.test(\"Resultado: Todos os valores do campo Status são Completed\", function () {\r",
+													"    const responseData = pm.response.json();\r",
+													"    \r",
+													"    pm.expect(responseData).to.be.an('array');\r",
+													"    responseData.forEach(function(item) {\r",
+													"        pm.expect(item.status).to.be.oneOf([\"completed\"]);\r",
+													"    });\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer ACCESS-TOKEN"
+											}
+										],
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/todos",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"todos"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create ToDo",
+							"item": [
+								{
+									"name": "TC1: Create_User_TODO-201",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 201\r",
+													"pm.test(\"Result: Status code is 201\", function () {\r",
+													"    pm.response.to.have.status(201);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Created\", function () {\r",
+													"    pm.response.to.have.status(\"Created\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('user_id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('title');\r",
+													"    pm.expect(pm.response.json()).to.have.property('due_on');\r",
+													"    pm.expect(pm.response.json()).to.have.property('status')\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"//Schema Validation\r",
+													"pm.test(\"Result: Response schema is valid\", function () {\r",
+													"  var schema = {\r",
+													"    type: \"object\",\r",
+													"    properties: {\r",
+													"      id: { type: \"number\" },\r",
+													"      user_id: { type: \"number\" },\r",
+													"      title: { type: \"string\" },\r",
+													"      due_on: { type: \"string\" },\r",
+													"      status: { type: \"string\" }\r",
+													"    },\r",
+													"    required: [\"id\", \"user_id\", \"title\", \"due_on\", \"status\"],\r",
+													"  };\r",
+													"\r",
+													"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"TODO: QA QA 3\",\r\n    \"due_on\": \"2024-08-22T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/7314350/todos",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"7314350",
+												"todos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC2: Create_User_TODO-422_UserNotCreated",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 422\r",
+													"pm.test(\"Result: Status code is 422\", function () {\r",
+													"    pm.response.to.have.status(422);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Unprocessable Entity\", function () {\r",
+													"    pm.response.to.have.status(\"Unprocessable Entity\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: must exist\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"must exist\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"TODO: QA QA 2\",\r\n    \"due_on\": \"2024-08-22T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/212121545454878787/todos",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"212121545454878787",
+												"todos"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get User ToDo",
+							"item": [
+								{
+									"name": "TC1: Get_User_ToDo-200",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/7314350/todos",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"7314350",
+												"todos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC2: Get_User_ToDo-200_UserDontExist",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/3221215454548787/todos",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"3221215454548787",
+												"todos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC3: Get_User_ToDo-200_UserDontHaveToDoCreated",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/users/7318461/todos",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"users",
+												"7318461",
+												"todos"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Update ToDo",
+							"item": [
+								{
+									"name": "TC1: Update_User_TODO-201",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 200\r",
+													"pm.test(\"Result: Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: OK\", function () {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('title');\r",
+													"    pm.expect(pm.response.json()).to.have.property('due_on');\r",
+													"    pm.expect(pm.response.json()).to.have.property('status');\r",
+													"    pm.expect(pm.response.json()).to.have.property('id');\r",
+													"    pm.expect(pm.response.json()).to.have.property('user_id')\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"TODO: QA QA 22\",\r\n    \"due_on\": \"2024-08-23T00:00:00.000+05:30\",\r\n    \"status\": \"completed\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/todos/59020",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"todos",
+												"59020"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC1: Update_User_TODO-404_ToDoDontEexist",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 404\r",
+													"pm.test(\"Result: Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Not Found\", function () {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"title\": \"TODO: QA QA 22\",\r\n    \"due_on\": \"2024-08-23T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/todos/32215487875421",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"todos",
+												"32215487875421"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Delete ToDo",
+							"item": [
+								{
+									"name": "TC1: Delete_User_TODO-204",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 204\r",
+													"pm.test(\"Result: Status code is 204\", function () {\r",
+													"    pm.response.to.have.status(204);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: No Content\", function () {\r",
+													"    pm.response.to.have.status(\"No Content\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/todos/58990",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"todos",
+												"58990"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "TC1: Delete_User_TODO-404_ToDoDontExist",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"//Validation for status code = 404\r",
+													"pm.test(\"Result: Status code is 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: Not Found\", function () {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													"\r",
+													"//Validation for parameter\r",
+													"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+													"    pm.expect(pm.response.json()).to.have.property('message');\r",
+													"});\r",
+													"\r",
+													"//Validation for TEXT CODE\r",
+													"pm.test(\"Result: Text code is: has already been taken\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+													"});\r",
+													"\r",
+													"//Validation the time of the response is less than 3 seconds\r",
+													"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+													"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+													"});"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://gorest.co.in/public/v2/todos/5899021548754875487",
+											"protocol": "https",
+											"host": [
+												"gorest",
+												"co",
+												"in"
+											],
+											"path": [
+												"public",
+												"v2",
+												"todos",
+												"5899021548754875487"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Automation Script (Integration Test)",
+			"item": [
+				{
+					"name": "TC1: List_users-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Resultado: Status code = 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Resultado: Text code = OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation of the fields for the response body\r",
+									"\r",
+									"pm.test(\"Resultado: O Response tem os campos: id, name, email, gender e status\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('name');\r",
+									"        pm.expect(item).to.have.property('email');\r",
+									"        pm.expect(item).to.have.property('gender');\r",
+									"        pm.expect(item).to.have.property('status');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Resultado: O tempo de resposta está abaixo de 3 segundos\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer ACCESS-TOKEN"
+							}
+						],
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC2: Create_User-201",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 201\r",
+									"pm.test(\"Result: Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: Created\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameteres of the response are correct\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('name');\r",
+									"    pm.expect(pm.response.json()).to.have.property('email');\r",
+									"    pm.expect(pm.response.json()).to.have.property('gender');\r",
+									"    pm.expect(pm.response.json()).to.have.property('status')\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Saving User in a collection variable\r",
+									"pm.test(\"Saving User\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"User-ID\",jsonData.id);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Gerar um nome único usando uma combinação de prefixo e um número aleatório\r",
+									"const uniqueName = `qa_${Math.floor(Math.random() * 100000)}`;\r",
+									"\r",
+									"// Gerar um email único usando o mesmo método com um domínio padrão\r",
+									"const uniqueEmail = `qa_${Math.floor(Math.random() * 100000)}@qaauto.com`;\r",
+									"\r",
+									"// Armazenar as variáveis para uso na requisição\r",
+									"pm.variables.set(\"name\", uniqueName);\r",
+									"pm.variables.set(\"email\", uniqueEmail);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"{{email}}\",\r\n    \"status\": \"active\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC3: Get_User_Details-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('name');\r",
+									"    pm.expect(pm.response.json()).to.have.property('email');\r",
+									"    pm.expect(pm.response.json()).to.have.property('gender');\r",
+									"    pm.expect(pm.response.json()).to.have.property('status')\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users/{{User-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users",
+								"{{User-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC4: Update_User-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('email');\r",
+									"    pm.expect(pm.response.json()).to.have.property('name');\r",
+									"    pm.expect(pm.response.json()).to.have.property('status');\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('gender')\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Gerar um email único usando o mesmo método com um domínio padrão\r",
+									"const uniqueEmail = `qa_update_${Math.floor(Math.random() * 100000)}@qaauto.com`;\r",
+									"\r",
+									"// Armazenar as variáveis para uso na requisição\r",
+									"pm.variables.set(\"email_update\", uniqueEmail);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"QA 99\",\r\n    \"email\": \"{{email_update}}\",\r\n    \"status\": \"active\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users/{{User-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users",
+								"{{User-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC5: List Posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer ACCESS-TOKEN"
+							}
+						],
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/posts",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC6: Create_User_Post-201",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 201\r",
+									"pm.test(\"Result: Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: Created\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('user_id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('title');\r",
+									"    pm.expect(pm.response.json()).to.have.property('body');\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"//Saving Post in a collection variable\r",
+									"pm.test(\"Saving Post\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"Post-ID\",jsonData.id);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Titulo Post 1\",\r\n    \"body\": \"Post da Postagem do Post 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users/{{User-ID}}/posts",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users",
+								"{{User-ID}}",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC7: Get_User_Posts-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users/{{User-ID}}/posts",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users",
+								"{{User-ID}}",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC8: Update_User_Post-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('title');\r",
+									"    pm.expect(pm.response.json()).to.have.property('body');\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('user_id')\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Titulo Post 222\",\r\n    \"body\": \"Post da Postagem do Post 222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/posts/{{Post-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"posts",
+								"{{Post-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC9: List_Comments-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer ACCESS-TOKEN"
+							}
+						],
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/comments",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC10: Create_Post_Comment-201",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 201\r",
+									"pm.test(\"Result: Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: Created\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('post_id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('name');\r",
+									"    pm.expect(pm.response.json()).to.have.property('email');\r",
+									"    pm.expect(pm.response.json()).to.have.property('body')\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"//Saving access User in a collection variable\r",
+									"pm.test(\"Saving Comment\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"Comment-ID\",jsonData.id);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tester QA\",\r\n    \"email\": \"tester@qa.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/posts/{{Post-ID}}/comments",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"posts",
+								"{{Post-ID}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC11: Get_Posts_Comments-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/posts/{{Post-ID}}/comments",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"posts",
+								"{{Post-ID}}",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC12: Update_Post_Comment-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('name');\r",
+									"    pm.expect(pm.response.json()).to.have.property('email');\r",
+									"    pm.expect(pm.response.json()).to.have.property('body');\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('post_id');\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tester QA 222\",\r\n    \"email\": \"tester@q2a.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user 2222222\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/comments/{{Comment-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"comments",
+								"{{Comment-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC13: List_ToDos-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validação para status code\r",
+									"pm.test(\"Resultado: Status code é igaul a 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validação do tempo de resposta da requisição deve ser menor que 3 segundos\r",
+									"pm.test(\"Resultado: O tempo de resposta é menor que 3 segundos\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"//Validação do schema response body\r",
+									"pm.test(\"Resultado: O Schema Response body está correto\", function () {\r",
+									"    var response = pm.response.json();\r",
+									"    response.forEach((todo) => {\r",
+									"        pm.expect(todo).to.have.property('id');\r",
+									"        pm.expect(todo).to.have.property('user_id');\r",
+									"        pm.expect(todo).to.have.property('title');\r",
+									"        pm.expect(todo).to.have.property('due_on');\r",
+									"        pm.expect(todo).to.have.property('status');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"//Validação para os campos requeridos no response body\r",
+									"pm.test(\"Resultado: O Response tem os campos: id, user_id, title, due_on e status\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('user_id');\r",
+									"        pm.expect(item).to.have.property('title');\r",
+									"        pm.expect(item).to.have.property('due_on');\r",
+									"        pm.expect(item).to.have.property('status');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"//Validação para interpretar e validar o valor do campo due_on\r",
+									"pm.test(\"Resultado: O campo Due_on esta com o formato Date/Time válido\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  responseData.forEach(function(todo) {\r",
+									"    pm.expect(todo.due_on).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}[+-]\\d{2}:\\d{2}$/);\r",
+									"  });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer ACCESS-TOKEN"
+							}
+						],
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/todos",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC14: Create_User_TODO-201",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 201\r",
+									"pm.test(\"Result: Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: Created\", function () {\r",
+									"    pm.response.to.have.status(\"Created\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('user_id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('title');\r",
+									"    pm.expect(pm.response.json()).to.have.property('due_on');\r",
+									"    pm.expect(pm.response.json()).to.have.property('status')\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"//Schema Validation\r",
+									"pm.test(\"Result: Response schema is valid\", function () {\r",
+									"  var schema = {\r",
+									"    type: \"object\",\r",
+									"    properties: {\r",
+									"      id: { type: \"number\" },\r",
+									"      user_id: { type: \"number\" },\r",
+									"      title: { type: \"string\" },\r",
+									"      due_on: { type: \"string\" },\r",
+									"      status: { type: \"string\" }\r",
+									"    },\r",
+									"    required: [\"id\", \"user_id\", \"title\", \"due_on\", \"status\"],\r",
+									"  };\r",
+									"\r",
+									"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;\r",
+									"});\r",
+									"\r",
+									"//Saving access User in a collection variable\r",
+									"pm.test(\"Saving ToDo\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.collectionVariables.set(\"TODO-ID\",jsonData.id);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"TODO: QA QA 3\",\r\n    \"due_on\": \"2024-08-22T00:00:00.000+05:30\",\r\n    \"status\": \"pending\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users/{{User-ID}}/todos",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users",
+								"{{User-ID}}",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC15: Get_User_ToDo-200",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users/{{User-ID}}/todos",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users",
+								"{{User-ID}}",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC16: Update_User_TODO-201",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Result: Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation for parameter\r",
+									"pm.test(\"Result: The parameter token was displayed in the response body\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property('title');\r",
+									"    pm.expect(pm.response.json()).to.have.property('due_on');\r",
+									"    pm.expect(pm.response.json()).to.have.property('status');\r",
+									"    pm.expect(pm.response.json()).to.have.property('id');\r",
+									"    pm.expect(pm.response.json()).to.have.property('user_id')\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"TODO: QA QA 223\",\r\n    \"due_on\": \"2024-08-24T00:00:00.000+05:30\",\r\n    \"status\": \"completed\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/todos/{{TODO-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"todos",
+								"{{TODO-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC17: Delete_User-204_NoContent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 204\r",
+									"pm.test(\"Result: Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: No Content\", function () {\r",
+									"    pm.response.to.have.status(\"No Content\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/users/{{User-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"users",
+								"{{User-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC18: Delete_User_Post-204",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 204\r",
+									"pm.test(\"Result: Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: No Content\", function () {\r",
+									"    pm.response.to.have.status(\"No Content\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Titulo Post 1111\",\r\n    \"body\": \"Post da Postagem do Post 1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/posts/{{Post-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"posts",
+								"{{Post-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC19: Delete_Post_Comment-204",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 204\r",
+									"pm.test(\"Result: Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: No Content\", function () {\r",
+									"    pm.response.to.have.status(\"No Content\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tester QA 222\",\r\n    \"email\": \"tester@q2a.com\",\r\n    \"body\": \"Este é um teste de comentários para o post criado por um user 2222222\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/comments/{{Comment-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"comments",
+								"{{Comment-ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC20: Delete_User_TODO-204",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Validation for status code = 204\r",
+									"pm.test(\"Result: Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Result: Text code is: No Content\", function () {\r",
+									"    pm.response.to.have.status(\"No Content\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Result: The response time is less than 3 seconds\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://gorest.co.in/public/v2/todos/{{TODO-ID}}",
+							"protocol": "https",
+							"host": [
+								"gorest",
+								"co",
+								"in"
+							],
+							"path": [
+								"public",
+								"v2",
+								"todos",
+								"{{TODO-ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{API-Token-NOS}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API-Token-NOS",
+			"value": "be61fb068f6dca8d893ef6973f0335d6d6746acc61fa3f5874c814533850deaa",
+			"type": "string"
+		},
+		{
+			"key": "User-ID",
+			"value": ""
+		},
+		{
+			"key": "Post-ID",
+			"value": ""
+		},
+		{
+			"key": "Comment-ID",
+			"value": ""
+		},
+		{
+			"key": "TODO-ID",
+			"value": ""
+		}
+	]
+}
