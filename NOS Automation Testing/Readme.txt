@@ -1,5 +1,9 @@
 # NOS Automation Testing
 
+    Bem vindo ao projeto "NOS Automation Testing". Neste projeto pude realizar o Planejamento e Execução dos Testes para a os endpoints do site https://gorest.co.in/.
+
+    A seguir estão os tópicos solicitados no documento "NOS Automation Testing.pdf".
+
 ## 1. Escolher uma ferramenta para automatizar testes à seguinte Api REST, explica o porquê dessa escolha. https://gorest.co.in/
 
     Para este projeto, escolhi o Postman para a organização do Plano de Testes e para a Automação. Na minha opinião, o Postman oferece uma interface amigável, facilitando a construção e teste de requisições HTTP. Com o Postman posso  criar, salvar e organizar casos de teste rapidamente.
@@ -17,11 +21,34 @@ Dentro da coleção criei duas pastas:
 
     Na Pasta "Manual Script (Functional Test)" foram criados os casos de testes dos endpoints /users, /posts, /comments e /todos.
     Os casos de testes contidos nesta pasta são para tipos de teste Funcionais e de forma manual pois para cada endpoint os valores devem ser alterados manualmente.
+        Casos de Teste:
+            - Users/List users: 3 Casos de teste
+            - Users/Create users: 15 Casos de teste
+            - Users/Get user detail: 2 Casos de teste
+            - Users/Update users: 1 Caso de teste
+            - Users/Delete users: 2 Casos de teste
+            - Posts/List posts: 1 Caso de teste
+            - Posts/Create posts: 1 Casos de teste
+            - Posts/Get post detail: 2 Casos de teste
+            - Posts/Update post: 2 Caso de teste
+            - Posts/Delete post: 2 Casos de teste
+            - Comments/List comments: 1 Caso de teste
+            - Comments/Create comments: 2 Casos de teste
+            - Comments/Get comment detail: 2 Casos de teste
+            - Comments/Update comment: 2 Caso de teste
+            - Comments/Delete comment: 2 Casos de teste
+            - ToDo/List ToDo: 1 Caso de teste
+            - ToDo/Create ToDo: 2 Casos de teste
+            - ToDo/Get ToDo detail: 3 Casos de teste
+            - ToDo/Update ToDo: 2 Caso de teste
+            - ToDo/Delete ToDo: 2 Casos de teste
+
+            OBS: Não foram criados todos os casos de teste que eu gostaria de sugerir. Entendo que os casos de testes criados no "Users/Create users:" podem estender para os demais creates com suas respectivas regras de parametros.
 
 
     Na Pasta "Automation Script (Integration Test)" foram criados os casos de testes dos endpoints /users, /posts, /comments e /todos.
     Os casos de testes contidos nesta pasta são para tipos de teste de integração e de forma automática. Neste script criei variáveis de alguns parametros de responses para que fossem utilizados em outros endpoins.
-    
+        Casos de Teste: 20 Casos de teste.    
 
 
 
@@ -39,7 +66,7 @@ Passos para executar os testes siga os seguintes passos:
 
     A solicitação de automação solicitada no documento do Teste foram criados dentro da aba Scripts nos casos de teste TC13 da pasta "Automation Script (Integration Test)" da collection do Postman.
     
-    O código deste script foi adicionado ao seguinte endereço do Github: 
+    O código deste script foi adicionado ao seguinte endereço do Github: https://github.com/murillopmiranda/Interview_NOS_Automation_Test
 
 ## 4. DevOps, CI/CD.
     
