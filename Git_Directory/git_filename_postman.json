@@ -5375,6 +5375,80 @@
 						"url": "https://gorest.co.in/public/v2/users"
 					},
 					"response": []
+				},
+				{
+					"name": "TC1: List_users-200 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c7518419-4ee3-454c-a39f-d6ec0d8b8930",
+								"exec": [
+									"//Validation for status code = 200\r",
+									"pm.test(\"Resultado: Status code = 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"//Validation for TEXT CODE\r",
+									"pm.test(\"Resultado: Text code = OK\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"//Validation of the fields for the response body\r",
+									"\r",
+									"pm.test(\"Resultado: O Response tem os campos: id, name, email, gender e status dds\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData).to.be.an('array');\r",
+									"    responseData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('name');\r",
+									"        pm.expect(item).to.have.property('email');\r",
+									"        pm.expect(item).to.have.property('gender');\r",
+									"        pm.expect(item).to.have.property('status');\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"//Validation the time of the response is less than 3 seconds\r",
+									"pm.test(\"Resultado: O tempo de resposta está abaixo de 3 segundos\", function () {\r",
+									"        pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "eaa7a2be-309c-4eda-a8d9-4c619fa5f9c1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer ACCESS-TOKEN"
+							}
+						],
+						"url": "https://gorest.co.in/public/v2/users"
+					},
+					"response": []
 				}
 			],
 			"id": "99280a49-2c64-4a3a-8823-ed5dcc52d66c"
